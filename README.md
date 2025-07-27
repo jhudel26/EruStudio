@@ -42,7 +42,7 @@ For worksheet consolidation:
 
 ## 📦 Installation
 
-You can download the latest installer from the [Releases](https://github.com/jhudel26/EruStudio/tree/master/Installer/EruStudio.exe) section.
+You can download the latest installer from the [Releases](https://github.com/jhudel26/EruStudio/releases/tag/V.1) section.
 
 1. Download the `.exe` installer.
 2. Run the installer.
