@@ -60,7 +60,7 @@ You can download the latest installer from the [Releases](https://github.com/jhu
 
 ## 🔒 License
 
-This project is licensed under the **MIT License** – see the [LICENSE](https://github.com/jhudel26/EruStudio/blob/master/MIT%20License.txt) file for details.
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -72,5 +72,5 @@ Contributions are welcome! Feel free to open issues, fork the repo, and submit p
 
 ## 📧 Contact
 
-Created by [Jhudel Orola]
+Created by [Jhudel Orola](mailto:your.email@example.com)
 
