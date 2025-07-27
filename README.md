@@ -46,10 +46,4 @@ This application is designed to simplify your file and document management tasks
 • TEMPLATE.xlsx – Sample template for file operations
 
 ──────────────────────────
-📩 SUPPORT:
-──────────────────────────
-For questions, feedback, or support, contact:
-📧 Email: jhudel251526@gmail.com
-
-──────────────────────────
 © 2025 EruStudio. All rights reserved.
