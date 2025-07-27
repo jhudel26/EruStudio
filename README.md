@@ -54,7 +54,7 @@ You can download the latest installer from the [Releases](https://github.com/jhu
 
 - An icon is included in the build.
 - A ReadMe file will be shown after installation.
-- The application includes a basic [LICENSE](LICENSE) file.
+- The application includes a basic [LICENSE](https://github.com/jhudel26/EruStudio/blob/master/LICENSE.txt) file.
 
 ---
 
