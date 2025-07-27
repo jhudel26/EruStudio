@@ -1,49 +1,73 @@
+# 📁 EruStudio – File & Worksheet Manager
 
-📘 EruStudio Application
-==========================
+**EruStudio** is a Windows Forms application designed to simplify file and folder management and Excel worksheet consolidation. Built in Visual Studio 2022, it offers a modern GUI and essential tools for power users and office workers.
 
-Thank you for using EruStudio!
+---
 
-This application is designed to simplify your file and document management tasks with a modern, easy-to-use interface.
+## ✨ Features
 
-──────────────────────────
-🔧 MAIN FEATURES:
-──────────────────────────
+### 📊 Worksheet Consolidation
+- Combine multiple worksheets into one.
+- Automatically matches headers across sheets.
+- Converts formulas to static values.
 
-1. 📑 Worksheet Consolidation
-   • Consolidate multiple worksheets from a workbook.
-   • Matches headers to merge data accurately.
-   • Automatically converts formulas to static values.
+### 🗃️ File and Folder Operations
+- **Rename**: Batch rename files or folders using Excel templates.
+- **Move**: Move files or folders to new destinations with ease.
+- **Zip**: Compress selected files or folders based on templates.
 
-2. 🗃️ File and Folder Modification
-   • Rename multiple files or folders using an Excel template.
-   • Move files/folders to a new location in bulk.
-   • Zip selected files/folders for easy packaging.
+### 🔍 Advanced File/Folder Search
+- Search for specific files or folders based on keywords.
+- 3-pass search logic: folder names → file names → PDF content.
+- Supports scanning and copying matching files to another location.
 
-3. 🔍 File, Folder, and PDF Content Search
-   • Search files and folders based on keywords.
-   • Smart multi-pass search:
-     - Folder name
-     - File name
-     - PDF content (using embedded PDF text extractor)
-   • Copy matching items to a destination folder.
-   • Option to export the results to Excel.
+---
 
-──────────────────────────
-📂 SYSTEM REQUIREMENTS:
-──────────────────────────
-• Windows 10 or later
-• Microsoft Excel installed
-• .NET Framework 4.7.2 or later
-• For PDF content search: `pdftotext.exe` (must be located at: C:\tools\pdftotext.exe)
+## 🧰 How It Works
 
-──────────────────────────
-📄 INCLUDED FILES:
-──────────────────────────
-• EruStudio.exe – Main application
-• README.txt – This file
-• LICENSE.txt – License information
-• TEMPLATE.xlsx – Sample template for file operations
+1. **Select Main Folder** – Choose the base directory to process.
+2. **Choose Mode** – Decide if you want to work on files or folders.
+3. **Pick Action** – Rename, Move, or Zip.
+4. **Download Template** – Generate an Excel template based on your selection.
+5. **Fill Template** – Edit the file with new names or paths.
+6. **Upload Template** – Import it back into the app.
+7. **Run Operation** – Execute the selected task and track progress.
 
-──────────────────────────
-© 2025 EruStudio. All rights reserved.
+For worksheet consolidation:
+1. Import a workbook with multiple sheets.
+2. The app will merge all rows into one consolidated sheet based on header match.
+3. Optionally export the result.
+
+---
+
+## 📦 Installation
+
+You can download the latest installer from the [Releases](https://github.com/jhudel26/EruStudio/tree/master/Installer) section.
+
+1. Download the `.exe` installer.
+2. Run the installer.
+3. Follow the on-screen instructions.
+
+---
+
+## 🖼 Icons, README & License
+
+- An icon is included in the build.
+- A ReadMe file will be shown after installation.
+- The application includes a basic [LICENSE](LICENSE) file.
+
+---
+
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues, fork the repo, and submit pull requests.
+
+---
+
+## 📧 Contact
+
+Created by [Jhudel Orola]
+
