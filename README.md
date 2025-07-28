@@ -1,76 +1,85 @@
+
 # 📁 EruStudio – File & Worksheet Manager
 
-**EruStudio** is a Windows Forms application designed to simplify file and folder management and Excel worksheet consolidation. Built in Visual Studio 2022, it offers a modern GUI and essential tools for power users and office workers.
+**EruStudio** is a powerful Windows Forms application designed for streamlined file/folder management and Excel worksheet consolidation. Developed in **Visual Studio 2022**, it features a modern and intuitive interface aimed at professionals, office users, and power users who frequently work with structured data and complex directories.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-### 📊 Worksheet Consolidation
-- Combine multiple worksheets into one.
+### 📊 Excel Worksheet Consolidation
+- Merge multiple worksheets into a single consolidated sheet.
 - Automatically matches headers across sheets.
-- Converts formulas to static values.
+- Converts formulas to static values for stability.
 
-### 🗃️ File and Folder Operations
-- **Rename**: Batch rename files or folders using Excel templates.
-- **Move**: Move files or folders to new destinations with ease.
-- **Zip**: Compress selected files or folders based on templates.
+### 🗂 File and Folder Batch Operations
+- **Rename**: Use Excel templates to batch rename files or folders.
+- **Move**: Relocate files/folders to new destinations based on provided paths.
+- **Zip**: Compress selected files/folders as defined in a template.
 
-### 🔍 Advanced File/Folder Search
-- Search for specific files or folders based on keywords.
-- 3-pass search logic: folder names → file names → PDF content.
-- Supports scanning and copying matching files to another location.
+### 🔍 Intelligent File & Folder Search
+- Locate files/folders using keyword-based search.
+- 3-phase search: Folder names → File names → PDF content.
+- Optionally copy matching results to a selected destination.
+
+---
+
+## 🆕 Latest Update
+
+The search functionality has been enhanced:
+
+- Users will now see a **“Search is starting…”** notification.
+- Upon completion, unmatched search terms will display:  
+  **“No file/folder found for this search term”** in the result Excel file.
 
 ---
 
 ## 🧰 How It Works
 
-1. **Select Main Folder** – Choose the base directory to process.
-2. **Choose Mode** – Decide if you want to work on files or folders.
-3. **Pick Action** – Rename, Move, or Zip.
-4. **Download Template** – Generate an Excel template based on your selection.
-5. **Fill Template** – Edit the file with new names or paths.
-6. **Upload Template** – Import it back into the app.
-7. **Run Operation** – Execute the selected task and track progress.
+### 🔧 For File/Folder Operations
+1. **Select Main Folder** – Choose the directory to process.
+2. **Choose Mode** – Specify whether to process files or folders.
+3. **Pick Action** – Select Rename, Move, or Zip.
+4. **Export Template** – Download an Excel template tailored to your selection.
+5. **Fill Template** – Edit the file to specify new names or paths.
+6. **Import Template** – Load the modified template into the app.
+7. **Run Operation** – Execute the task and monitor progress.
 
-For worksheet consolidation:
-1. Import a workbook with multiple sheets.
-2. The app will merge all rows into one consolidated sheet based on header match.
-3. Optionally export the result.
+### 📑 For Worksheet Consolidation
+1. **Import Workbook** – Load a workbook with multiple sheets.
+2. **Automatic Merge** – The app merges data based on matching headers.
+3. **Export Result** – Save the unified data into a single sheet.
 
 ---
 
 ## 📦 Installation
 
-You can download the latest installer from the [Releases](https://github.com/jhudel26/EruStudio/releases/tag/V.1) section.
-
-1. Download the `.exe` installer.
-2. Run the installer.
-3. Follow the on-screen instructions.
+1. Visit the [Releases](https://github.com/jhudel26/EruStudio/releases/tag/V.0.1.1) page.
+2. Download the latest `.exe` installer.
+3. Run the installer and follow the on-screen instructions.
 
 ---
 
-## 🖼 Icons, README & License
+## 🧾 Additional Notes
 
-- An icon is included in the build.
-- A ReadMe file will be shown after installation.
-- The application includes a basic [LICENSE](https://github.com/jhudel26/EruStudio/blob/master/LICENSE.txt) file.
+- A desktop icon is included in the installation build.
+- A `README` file is displayed after installation.
 
 ---
 
 ## 🔒 License
 
-This project is licensed under the **MIT License** – see the [LICENSE](https://github.com/jhudel26/EruStudio/blob/master/LICENSE.txt) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](https://github.com/jhudel26/EruStudio/blob/master/LICENSE.txt) file for full terms.
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contributions
 
-Contributions are welcome! Feel free to open issues, fork the repo, and submit pull requests.
+Contributions, bug reports, and feature requests are welcome!  
+Please feel free to fork the repository, submit pull requests, or open issues.
 
 ---
 
-## 📧 Contact
+## 📬 Contact
 
-Created by [Jhudel Orola](mailto:your.email@example.com)
-
+Developed by **Jhudel Orola**  
