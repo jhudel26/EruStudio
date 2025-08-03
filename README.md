@@ -1,4 +1,3 @@
-
 # 📁 EruStudio – File & Worksheet Manager
 
 **EruStudio** is a powerful Windows Forms application designed for streamlined file/folder management and Excel worksheet consolidation. Developed in **Visual Studio 2022**, it features a modern and intuitive interface aimed at professionals, office users, and power users who frequently work with structured data and complex directories.
@@ -22,15 +21,22 @@
 - 3-phase search: Folder names → File names → PDF content.
 - Optionally copy matching results to a selected destination.
 
+### 📝 PDF Renamer with Excel Export ✅
+- Extract names from PDFs by defining "Before" and "After" text markers.
+- Rename files based on extracted text + optional suffix.
+- Tracks renamed files.
+- **Export rename results to Excel**:
+  - Column A: Original file name
+  - Column B: New file name
+
 ---
 
 ## 🆕 Latest Update
 
-The search functionality has been enhanced:
-
-- Users will now see a **“Search is starting…”** notification.
-- Upon completion, unmatched search terms will display:  
-  **“No file/folder found for this search term”** in the result Excel file.
+- Added **PDF Renamer** with support for extracting names from content and renaming files accordingly.
+- **Export to Excel**: Save a log of renamed files (before → after).
+- Displays how many PDF files are ready for renaming upon folder selection.
+- Disables user input while the renaming process is running to prevent errors.
 
 ---
 
@@ -38,12 +44,19 @@ The search functionality has been enhanced:
 
 ### 🔧 For File/Folder Operations
 1. **Select Main Folder** – Choose the directory to process.
-2. **Choose Mode** – Specify whether to process files or folders.
-3. **Pick Action** – Select Rename, Move, or Zip.
-4. **Export Template** – Download an Excel template tailored to your selection.
-5. **Fill Template** – Edit the file to specify new names or paths.
-6. **Import Template** – Load the modified template into the app.
-7. **Run Operation** – Execute the task and monitor progress.
+2. **File/Folder Checkboxes** – Choose whether to process Files, Folders, or both.
+3. **Select Modifier** – Select what operation to perform: Rename, Move, or Zip.
+4. **Export Template** – Download an Excel template based on your selected operation.
+5. **Import Template** – After editing the template, upload it back to the app.
+6. **Run Modifier** – Execute the selected action based on the uploaded template.
+
+### 📝 For PDF Renamer
+1. **Select Folder** – Choose a folder containing PDF files.
+2. **Enter Text Markers** – Input the "Before" and "After" text to extract names.
+3. **Set Page Limit** – Define how many pages to search in each PDF.
+4. **Add Optional Suffix** – Append text after the extracted name if needed.
+5. **Click Rename** – The app processes files and renames them.
+6. **Download Result** – Export the rename history to an Excel file.
 
 ### 📑 For Worksheet Consolidation
 1. **Import Workbook** – Load a workbook with multiple sheets.
@@ -54,7 +67,7 @@ The search functionality has been enhanced:
 
 ## 📦 Installation
 
-1. Visit the [Releases](https://github.com/jhudel26/EruStudio/releases/tag/V.0.1.1) page.
+1. Visit the [Releases](https://github.com/jhudel26/EruStudio/releases/tag/V.1) page.
 2. Download the latest `.exe` installer.
 3. Run the installer and follow the on-screen instructions.
 
@@ -64,6 +77,7 @@ The search functionality has been enhanced:
 
 - A desktop icon is included in the installation build.
 - A `README` file is displayed after installation.
+- A [LICENSE](https://github.com/jhudel26/EruStudio/blob/master/LICENSE.txt) file is bundled with the app.
 
 ---
 
@@ -83,3 +97,4 @@ Please feel free to fork the repository, submit pull requests, or open issues.
 ## 📬 Contact
 
 Developed by **Jhudel Orola**  
+
