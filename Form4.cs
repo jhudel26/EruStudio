@@ -17,24 +17,41 @@ namespace EruStudio
     {
         private List<string> searchWords = new List<string>();
         private List<(string name, string type, string path)> results = new List<(string, string, string)>();
+        private HashSet<string> matchedWords = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         public FormFileFinder()
         {
             InitializeComponent();
 
-            // Event bindings
             btnbrows.Click += btnbrows_Click;
             imtemplate.Click += imtemplate_Click;
             btnCopyto.Click += btnCopyto_Click;
             bntfind.Click += bntfind_Click;
             btndownload.Click += btndownload_Click;
-            btnexport.Click += btnexport_Click; // ✅ New button
+            btnexport.Click += btnexport_Click;
         }
 
         private void FormFileFinder_Load(object sender, EventArgs e)
         {
             Progresult.ReadOnly = true;
             Progresult.ScrollBars = ScrollBars.Vertical;
+        }
+
+        private void LogProgress(string message)
+        {
+            if (Progresult.InvokeRequired)
+            {
+                Progresult.Invoke(new Action(() =>
+                {
+                    Progresult.AppendText(message + Environment.NewLine);
+                    Progresult.ScrollToCaret();
+                }));
+            }
+            else
+            {
+                Progresult.AppendText(message + Environment.NewLine);
+                Progresult.ScrollToCaret();
+            }
         }
 
         private void btnbrows_Click(object sender, EventArgs e)
@@ -72,7 +89,7 @@ namespace EruStudio
                 }
             }
 
-            Progresult.AppendText("✅ Loaded " + searchWords.Count + " search terms.\r\n");
+            LogProgress("✅ Loaded " + searchWords.Count + " search terms.");
         }
 
         private void btnCopyto_Click(object sender, EventArgs e)
@@ -93,12 +110,21 @@ namespace EruStudio
             }
 
             results.Clear();
+            matchedWords.Clear();
             Progresult.Clear();
+
+            // ✅ Make inputs read-only before processing
+            txtpath.ReadOnly = true;
+            txttemplate.ReadOnly = true;
+            txtto.ReadOnly = true;
+
             Task.Run(() => StartSearch(txtpath.Text));
         }
 
         private void StartSearch(string rootPath)
         {
+            LogProgress("🔍 Starting search...");
+
             var files = Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
             var folders = Directory.GetDirectories(rootPath, "*", SearchOption.AllDirectories);
 
@@ -107,13 +133,24 @@ namespace EruStudio
                 foreach (var folder in folders)
                 {
                     string name = Path.GetFileName(folder);
+                    LogProgress("📁 Checking folder: " + name);
+                    bool found = false;
+
                     foreach (string word in searchWords)
                     {
                         if (name.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
+                            LogProgress($"✅ Match found (Folder): {name}");
                             CopyItem(folder, "Folder");
+                            matchedWords.Add(word);
+                            found = true;
                             break;
                         }
+                    }
+
+                    if (!found)
+                    {
+                        LogProgress($"❌ Nothing found in folder: {name}");
                     }
                 }
             }
@@ -123,12 +160,15 @@ namespace EruStudio
                 foreach (var file in files)
                 {
                     string name = Path.GetFileName(file);
+                    LogProgress("📄 Checking file: " + name);
                     bool match = false;
 
                     foreach (string word in searchWords)
                     {
                         if (name.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
+                            LogProgress($"✅ Name match: {name}");
+                            matchedWords.Add(word);
                             match = true;
                             break;
                         }
@@ -136,11 +176,14 @@ namespace EruStudio
 
                     if (!match && Path.GetExtension(file).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                     {
+                        LogProgress($"🔎 Extracting text from PDF: {name}");
                         string text = ExtractPdfText(file);
                         foreach (string word in searchWords)
                         {
                             if (text.IndexOf(word, StringComparison.OrdinalIgnoreCase) >= 0)
                             {
+                                LogProgress($"✅ PDF content match: {name}");
+                                matchedWords.Add(word);
                                 match = true;
                                 break;
                             }
@@ -148,13 +191,24 @@ namespace EruStudio
                     }
 
                     if (match)
+                    {
                         CopyItem(file, "File");
+                    }
+                    else
+                    {
+                        LogProgress($"❌ Nothing found in file: {name}");
+                    }
                 }
             }
 
-            this.Invoke(new MethodInvoker(() =>
+            LogProgress("🎉 Done searching!");
+
+            // ✅ Re-enable inputs after search completes
+            this.Invoke(new Action(() =>
             {
-                Progresult.AppendText("✅ Done searching!\r\n");
+                txtpath.ReadOnly = false;
+                txttemplate.ReadOnly = false;
+                txtto.ReadOnly = false;
             }));
         }
 
@@ -190,17 +244,11 @@ namespace EruStudio
 
                 results.Add((Path.GetFileName(path), type, path));
 
-                this.Invoke(new MethodInvoker(() =>
-                {
-                    Progresult.AppendText($"✔ Copied: {path}\r\n");
-                }));
+                LogProgress($"✔ Copied: {path}");
             }
             catch (Exception ex)
             {
-                this.Invoke(new MethodInvoker(() =>
-                {
-                    Progresult.AppendText($"❌ Error copying {path} - {ex.Message}\r\n");
-                }));
+                LogProgress($"❌ Error copying {path} - {ex.Message}");
             }
         }
 
@@ -218,7 +266,7 @@ namespace EruStudio
 
         private void btndownload_Click(object sender, EventArgs e)
         {
-            if (results.Count == 0)
+            if (results.Count == 0 && searchWords.Count == 0)
             {
                 MessageBox.Show("No results to export.");
                 return;
@@ -231,11 +279,12 @@ namespace EruStudio
                     using (var wb = new XLWorkbook())
                     {
                         var ws = wb.AddWorksheet("Results");
-                        ws.Cell(1, 1).Value = "Name";
+                        ws.Cell(1, 1).Value = "Name / Search Word";
                         ws.Cell(1, 2).Value = "Type";
-                        ws.Cell(1, 3).Value = "Full Path";
+                        ws.Cell(1, 3).Value = "Full Path or Note";
 
                         int row = 2;
+
                         foreach (var res in results)
                         {
                             ws.Cell(row, 1).Value = res.name;
@@ -244,15 +293,23 @@ namespace EruStudio
                             row++;
                         }
 
+                        var notMatched = searchWords.Where(word => !matchedWords.Contains(word));
+                        foreach (var word in notMatched)
+                        {
+                            ws.Cell(row, 1).Value = word;
+                            ws.Cell(row, 2).Value = "Not Found";
+                            ws.Cell(row, 3).Value = "No file/folder found for this search term";
+                            row++;
+                        }
+
                         wb.SaveAs(save.FileName);
                     }
 
-                    Progresult.AppendText("💾 Excel file saved!\r\n");
+                    LogProgress("💾 Excel file saved!");
                 }
             }
         }
 
-        // ✅ NEW: Export Template Handler
         private void btnexport_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog save = new SaveFileDialog())
@@ -273,7 +330,7 @@ namespace EruStudio
                             wb.SaveAs(save.FileName);
                         }
 
-                        Progresult.AppendText("📄 Template exported to: " + save.FileName + "\r\n");
+                        LogProgress("📄 Template exported to: " + save.FileName);
                     }
                     catch (Exception ex)
                     {
@@ -281,6 +338,11 @@ namespace EruStudio
                     }
                 }
             }
+        }
+
+        private void txttemplate_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

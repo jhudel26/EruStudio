@@ -15,7 +15,7 @@ namespace EruStudio
         {
             InitializeComponent();
 
-            btnbrows.Click += btnbrows_Click;
+            btnbrows1.Click += btnbrows1_Click;
             dltemplate.Click += dltemplate_Click;
             imtemplate.Click += imtemplate_Click;
             bntRun.Click += bntRun_Click;
@@ -34,7 +34,7 @@ namespace EruStudio
             cmbAction.Items.AddRange(new[] { "Create", "Rename", "Move", "Zip" });
         }
 
-        private void btnbrows_Click(object sender, EventArgs e)
+        private void btnbrows1_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
@@ -199,6 +199,10 @@ namespace EruStudio
 
             try
             {
+                // Set textboxes to readonly while processing
+                txtpath.ReadOnly = true;
+                txttemplate.ReadOnly = true;
+
                 progressBar1.Value = 0;
                 progressBar1.Visible = true;
                 lblStatus.Visible = true;
@@ -217,10 +221,15 @@ namespace EruStudio
             }
             finally
             {
+                // Restore textboxes to editable after processing
+                txtpath.ReadOnly = false;
+                txttemplate.ReadOnly = false;
+
                 progressBar1.Visible = false;
                 lblStatus.Visible = false;
             }
         }
+
 
         private void ProcessTemplate(string templatePath, string action)
         {

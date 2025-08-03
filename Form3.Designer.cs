@@ -38,7 +38,7 @@
             this.bntRun = new System.Windows.Forms.Button();
             this.txttemplate = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnbrows = new System.Windows.Forms.Button();
+            this.btnbrows1 = new System.Windows.Forms.Button();
             this.txtpath = new System.Windows.Forms.TextBox();
             this.cmbAction = new System.Windows.Forms.ComboBox();
             this.dltemplate = new System.Windows.Forms.Button();
@@ -135,13 +135,12 @@
             this.txttemplate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttemplate.Location = new System.Drawing.Point(176, 22);
             this.txttemplate.Name = "txttemplate";
-            this.txttemplate.ReadOnly = true;
             this.txttemplate.Size = new System.Drawing.Size(284, 33);
             this.txttemplate.TabIndex = 8;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnbrows);
+            this.groupBox1.Controls.Add(this.btnbrows1);
             this.groupBox1.Controls.Add(this.txtpath);
             this.groupBox1.Controls.Add(this.cmbAction);
             this.groupBox1.Controls.Add(this.dltemplate);
@@ -156,22 +155,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // btnbrows
+            // btnbrows1
             // 
-            this.btnbrows.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbrows.Location = new System.Drawing.Point(2, 30);
-            this.btnbrows.Name = "btnbrows";
-            this.btnbrows.Size = new System.Drawing.Size(134, 38);
-            this.btnbrows.TabIndex = 0;
-            this.btnbrows.Text = "📁 Select Folder";
-            this.btnbrows.UseVisualStyleBackColor = true;
+            this.btnbrows1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbrows1.Location = new System.Drawing.Point(9, 29);
+            this.btnbrows1.Name = "btnbrows1";
+            this.btnbrows1.Size = new System.Drawing.Size(120, 38);
+            this.btnbrows1.TabIndex = 6;
+            this.btnbrows1.Text = "📁 Select Folder";
+            this.btnbrows1.UseVisualStyleBackColor = true;
             // 
             // txtpath
             // 
             this.txtpath.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpath.Location = new System.Drawing.Point(142, 34);
             this.txtpath.Name = "txtpath";
-            this.txtpath.ReadOnly = true;
             this.txtpath.Size = new System.Drawing.Size(318, 29);
             this.txtpath.TabIndex = 1;
             // 
@@ -273,5 +271,6 @@
         private System.Windows.Forms.CheckBox chkfolders;
         private System.Windows.Forms.CheckBox chkfiles;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnbrows1;
     }
 }

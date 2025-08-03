@@ -62,7 +62,6 @@
             this.txtpath.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpath.Location = new System.Drawing.Point(165, 35);
             this.txtpath.Name = "txtpath";
-            this.txtpath.ReadOnly = true;
             this.txtpath.Size = new System.Drawing.Size(316, 29);
             this.txtpath.TabIndex = 3;
             // 
@@ -81,9 +80,9 @@
             this.txttemplate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttemplate.Location = new System.Drawing.Point(197, 80);
             this.txttemplate.Name = "txttemplate";
-            this.txttemplate.ReadOnly = true;
             this.txttemplate.Size = new System.Drawing.Size(284, 33);
             this.txttemplate.TabIndex = 10;
+            this.txttemplate.TextChanged += new System.EventHandler(this.txttemplate_TextChanged);
             // 
             // Progresult
             // 
@@ -119,7 +118,6 @@
             this.txtto.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtto.Location = new System.Drawing.Point(197, 125);
             this.txtto.Name = "txtto";
-            this.txtto.ReadOnly = true;
             this.txtto.Size = new System.Drawing.Size(284, 33);
             this.txtto.TabIndex = 14;
             // 
