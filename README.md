@@ -67,7 +67,7 @@
 
 ## 📦 Installation
 
-1. Visit the [Releases](https://github.com/jhudel26/EruStudio/releases/tag/V.1) page.
+1. Visit the [Releases](https://github.com/jhudel26/EruStudio/releases/tag/V.0.1.3) page.
 2. Download the latest `.exe` installer.
 3. Run the installer and follow the on-screen instructions.
 
